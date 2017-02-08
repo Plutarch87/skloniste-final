@@ -1,0 +1,1 @@
+Dokumentacija se nalazi u skloniste/docs folderu.
