@@ -90,7 +90,7 @@
 				<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
 								<h2>Kulturno Sklonište</h2>
-								<p>2007. godine, Novi Sad je dobio novo sklonište, ali za razliku od svih do tada, ovo je sa pravom nazvano Kulturno Sklonište.</p>
+								<p>2008. godine, Novi Sad je dobio novo sklonište, ali za razliku od svih do tada, ovo je sa pravom nazvano Kulturno Sklonište.</p>
 								<p>Osnovano od strane gitariste Petra Jelića, Kulturno Sklonište je postalo sedište muzičkog obrazovanja, u kom polaznici svih generacija stiču osećaj i usavršavaju veštinu interpretiranja i stvaranja popularne muzike. Zahvaljujući radu tima kvalitetnih profesora - aktivnih muzičara, <strong>Kulturno Sklonište je postala najatraktivnija škola za popularnu muziku u Vojvodini</strong></p>
 						</div>
 					</div>
@@ -99,24 +99,36 @@
 
 
 		<section id="profesori" class="container content-section">
-
-		<div class="row" id="profesori">
-				<div class="col-lg-12">
-
-					<button class="btn btn-default btn-lg" id="dugme">Profesori</button>
-					<div id="accordion">
-					</div>
-				</div>        
-		</div>
-
+			<div class="row" id="profesori">
+					<div class="col-lg-12">
+						<h2 class="text-center">Ljudi</h2>
+						<div id="test" class="profesori clearfix">
+					</div>        
+			</div>
 		</section>
-		<!-- Download Section -->
+
+		<!-- Gallery Section -->
+		
 		<section id="download" class="content-section text-center">
+				<h2>Galerija</h2>
 				<div class="download-section">
 						<div class="container">
 								<div class="col-lg-8 col-lg-offset-2">
-										<p>Ovde možete pogledati naše slike.</p>
-										<button class="btn btn-default btn-lg" id="albumDivBtn" data-toggle="modal" data-target="#myModal">Galerija</button>
+
+								<!-- DIVOVI KOJI CE SE UVUCI AJAXOM -->
+
+									<div class="row clearfix galerija text-center">
+										
+										<div class="clearfix">
+											<a href=""><img src="php/views/assets/images/izbor/Galerija2.jpg"></a>
+										
+											<a href=""><img src="php/views/assets/images/izbor/Galerija4.jpg"></a>
+										</div>
+
+									</div>
+
+									<!-- <p>Ovde možete pogledati naše slike.</p>
+									<button class="btn btn-default btn-lg" id="albumDivBtn" data-toggle="modal" data-target="#myModal">Galerija</button> -->
 								</div>
 						</div>
 				</div>
@@ -126,9 +138,11 @@
 				<div class="row">
 						<div class="col-lg-8 col-lg-offset-2">
 								<h2>Kontakt</h2>
-								<p>Pevanje | gitara | bas gitara | klavijature | bubnjevi | DJ škola | mala škola rock 'n' roll-a l vokalna radionica l radionica sa decom sa smetnjama u razvoju. Pronađite nas u Lukijana Mušickog 7, Novi Sad.</p>
-								<p><a href="mailto:kulturnoskloniste@gmail.com">kulturnoskloniste@gmail.com</a>
-								</p>
+								<p>Petar Jelić: 063 1899777</p>
+								<p>Dragana Beliegišanin: 065 8623414</p>
+								<p>Sekretar: 021 6610369</p>									
+								<p>Pronađite nas u Lukijana Mušickog 7, Novi Sad.</p>
+								<p><a href="mailto:kulturnoskloniste@gmail.com">kulturnoskloniste@gmail.com</a></p>
 								<ul class="list-inline banner-social-buttons">
 										<li>
 												<a href="https://www.facebook.com/kulturnoskloniste/about/?entry_point=page_nav_about_item" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
@@ -154,71 +168,87 @@
 		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>				
 		<!-- JS -->
 		<script type="text/javascript">
-									$(function() {
-									
-									$( "#accordion" ).accordion({ active : false, collapsible: true }).toggle();
+			$(function() {
 
-									//PROFESORI
+			//PROFESORI
 
-									$.ajax({
+			$.ajax({
 
-										type : 'GET',
-										
-										url : 'api/v1/get_profesors.php',
-										
-										contentType : 'application/json',
-										
-										success : function(data){
+				type : 'GET',
+				
+				url : 'api/v1/get_profesors.php',
+				
+				contentType : 'application/json',
+				
+				success : function(data){
+					var datas = JSON.parse(data);
+					var content = "";
+					$.each(datas, function( index, value ) {
+						content +=
+								// "<div class='col-xs-6'>"+
+								"<div class='box-wrapper clearfix'>"+
+									"<div class='box-header'>"+
+										"<h1>"+ value.name + " " +value.surname +"&nbsp;&nbsp;<br/><i>"+ value.instrument +"</i></>"+
+									"</div>"+
+									"<div class='box-body clearfix'>"+
+											"<div class='col-xs-4'>"+ 
+												"<img src='php/views/assets/images/"+ value.img +"' class='img-responsive pull-left'>"+
+											"</div>"+
+											"<div class='col-xs-8'><p>"+ value.bio +"</p></div>"+
+										"</div>"+	
+									"</div>"+
+								"</div>";
+					});
+					$("#test").append(content);
+				// 	var datas = JSON.parse(data);
+				// 	for(i = 0; i < datas.length; i++){
+				// 	var content = '<h3>'+ datas[i].name + ' ' + datas[i].surname + '</h3>' + '<div class=row>' + '<img class="profimg" src="php/views/assets/images/' + datas[i].img + '">' + '<span class="profinfo">' + datas[i].bio + '</span>' + '</div>';
+					
+				// 	$("#accordion").append(content);
+					
+				// 	$("#accordion").accordion("refresh");
 
-											var datas = JSON.parse(data);
-											for(i = 0; i < datas.length; i++){
-											var content = '<h3>'+ datas[i].name + ' ' + datas[i].surname + '</h3>' + '<div class=row>' + '<img class="profimg" src="php/views/assets/images/' + datas[i].img + '">' + '<span class="profinfo">' + datas[i].bio + '</span>' + '</div>';
-											
-											$("#accordion").append(content);
-											
-											$("#accordion").accordion("refresh");
+				// 	}
+				}
+			});
 
-											}
-										}
-									});
+			$("#dugme").click(function(){
+				
+				$('#accordion').slideToggle('fast');
+			});
+			// GALERIJA //
+			$.ajax({
 
-									$("#dugme").click(function(){
-										
-										$('#accordion').slideToggle('fast');
-									});
-
-									$.ajax({
-
-										type : 'GET',
-										
-										url : 'api/v1/show_gallery.php?id=18',
-										
-										contentType : 'application/json',
-										
-										success : function(data){
+				type : 'GET',
+				
+				url : 'api/v1/show_gallery.php?id=18',
+				
+				contentType : 'application/json',
+				
+				success : function(data){
 
 
-											var data = JSON.parse(data);
+					var data = JSON.parse(data);
 
-											var carouselInner = $('.carousel-inner');
+					var carouselInner = $('.carousel-inner');
 
-											for(var i = 0; i < data.length; i++){
+					for(var i = 0; i < data.length; i++){
 
-												if(i === 0) {
-													var content = '<div class="item active" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
-												} else {
+						if(i === 0) {
+							var content = '<div class="item active" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
+						} else {
 
-													var content = '<div class="item" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
-												}
+							var content = '<div class="item" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
+						}
 
-											
-												carouselInner.append(content);										
+					
+						carouselInner.append(content);										
 
-											}
-										}
-									});
-								});
-								</script>
+					}
+				}
+			});
+		});
+		</script>
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
