@@ -407,3 +407,19 @@ h3:focus {
   padding: 20px 10px;
   margin-top: 10px;
 }
+
+.img-wrapper {
+  position: relative;
+  vertical-align: top;
+  display: inline-table;
+  width: calc(20% - 10px);
+  width: -moz-calc(20% - 10px);
+  padding: 20px 10px;
+  margin-top: 10px;
+}
+
+.koncert-img {
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
