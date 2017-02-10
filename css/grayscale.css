@@ -423,3 +423,7 @@ h3:focus {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.galerija > div.clearfix > a > img {
+  max-height: 250px;
+}
