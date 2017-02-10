@@ -113,27 +113,25 @@
 				<h2>Galerija</h2>
 				<div class="download-section">
 						<div class="container">
-								<div class="col-lg-8 col-lg-offset-2">
+							<div class="col-lg-8 col-lg-offset-2">
 
-								<!-- DIVOVI KOJI CE SE UVUCI AJAXOM -->
+							<!-- DIVOVI KOJI CE SE UVUCI AJAXOM -->
 
-									<div class="row clearfix galerija text-center">
-										
-										<div class="clearfix">
-											<a href="koncerti.html">
-												<img src="img/koncerti.png">
-											</a>
-										
-											<a href="">
-												<img src="img/kulturno skloniste 111104001.jpg">
-											</a>
-										</div>
-
+								<div class="row clearfix galerija text-center">
+									
+									<div class="clearfix">
+										<a href="koncerti.html" target="_blank">
+											<h3>Koncerti</h3>
+											<img src="img/koncerti.png">
+										</a>
+									
+										<a href="#" target="_blank">
+											<h3>Prostor</h3>
+											<img src="img/kulturno skloniste 111104001.jpg">
+										</a>
 									</div>
-
-									<!-- <p>Ovde možete pogledati naše slike.</p>
-									<button class="btn btn-default btn-lg" id="albumDivBtn" data-toggle="modal" data-target="#myModal">Galerija</button> -->
 								</div>
+							</div>
 						</div>
 				</div>
 		</section>
@@ -204,15 +202,6 @@
 								"</div>";
 					});
 					$("#test").append(content);
-				// 	var datas = JSON.parse(data);
-				// 	for(i = 0; i < datas.length; i++){
-				// 	var content = '<h3>'+ datas[i].name + ' ' + datas[i].surname + '</h3>' + '<div class=row>' + '<img class="profimg" src="php/views/assets/images/' + datas[i].img + '">' + '<span class="profinfo">' + datas[i].bio + '</span>' + '</div>';
-					
-				// 	$("#accordion").append(content);
-					
-				// 	$("#accordion").accordion("refresh");
-
-				// 	}
 				}
 			});
 
