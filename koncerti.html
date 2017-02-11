@@ -51,17 +51,18 @@
 <script type="text/javascript">
 	$.ajax({
 		type: "GET",
-		url: "api/v1/get_images.php",
+		url: "api/v1/get_images_gallery.php"+window.location.search,
 		contentType: "application/json",
 		success: function(data) {
 			var data = JSON.parse(data);
 			var content = "";
-			for(var i=0; i< data.length; i++) {
-				content+= "<div class='img-wrapper'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></div>"
-			}
+			$.each(data, function( index, value ) {
+				content+= "<div class='img-wrapper'><img class='koncert-img' src='php/views/assets/images/"+value.filename+"'></div>";
+			});
 			$('#root').append(content);
 		}
 	})
 </script>
+
 </body>
 </html>

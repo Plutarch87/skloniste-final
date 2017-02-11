@@ -167,18 +167,24 @@ class QueryBuilder
 	}
 
 	// Common Database Methods
-	public static function find_all($table, $id="")
+	public function find_all($table, $id="")
 	{
-		$db = new SQLite3('../../../skloniste.db');
-
-		$stmt = $db->query("SELECT * FROM '$table' WHERE galleryId='$id'");
-
+		$db = new SQLite3('../../skloniste.db');
+		$stmt = $db->query('SELECT * FROM '.$table.' WHERE category_id="'.$id.'"');
 		while($result = $stmt->fetchArray(SQLITE3_ASSOC)):
 			$r[] = $result;
 		arsort($r);
 		endwhile;
 
 		$db->close();
+
+		// $sql = 'SELECT * FROM
+  //   			images
+  //   			WHERE category_id = :category_id';
+
+		// $sth = $db->prepare($sql, PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+		// $sth->execute(array(':category_id' => $id));
+		// $res = $sth->fetchAll();
 		
 		return isset($r) ? $r : null;
   	}
