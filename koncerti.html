@@ -56,13 +56,25 @@
 		success: function(data) {
 			var data = JSON.parse(data);
 			var content = "";
+			let modal = "";
+			
 			$.each(data, function( index, value ) {
-				content+= "<div class='img-wrapper'><img class='koncert-img' src='php/views/assets/images/"+value.filename+"'></div>";
+
+				content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+value.id+"'><img class='koncert-img' src='php/views/assets/images/"+value.filename+"'></a></div>";
+					
+				modal += '<div id="myModal-'+value.id+'" class="modal fade">';
+				modal += '<div class="modal-body">';
+				modal += '<img src="php/views/assets/images/'+value.filename+'">';
+				modal += '</div>';
+				modal += '</div>';
+
 			});
+
 			$('#root').append(content);
+			$('#root').append(modal);
 		}
+		
 	})
 </script>
-
 </body>
 </html>

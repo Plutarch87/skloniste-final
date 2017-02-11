@@ -55,6 +55,7 @@ a:focus {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: black;
 }
+
 .navbar-custom .navbar-toggle {
   color: orange;
   background-color: rgba(255, 255, 255, 0.2);
@@ -441,4 +442,14 @@ h3:focus {
   height: 300px;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+a > i, span {
+  color: orange;
+}
+
+#logo {
+  max-height: 200px;
+  transition: all 0.5s ease;
+  transform: scale(0.7);
 }
