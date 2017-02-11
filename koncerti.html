@@ -56,14 +56,17 @@
 		success: function(data) {
 			var data = JSON.parse(data);
 			var content = "";
-			let modal = "";
+			var modal = "";
 			
 			$.each(data, function( index, value ) {
 
 				content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+value.id+"'><img class='koncert-img' src='php/views/assets/images/"+value.filename+"'></a></div>";
 					
-				modal += '<div id="myModal-'+value.id+'" class="modal fade">';
-				modal += '<div class="modal-body">';
+				modal += '<div id="myModal-'+value.id+'" class="modal fade" role="dialog">';
+				modal += '<div class="modal-header">'
+				modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
+				modal += '</div>';
+				modal += '<div class="modal-body" style="text-align: center;">';
 				modal += '<img src="php/views/assets/images/'+value.filename+'">';
 				modal += '</div>';
 				modal += '</div>';

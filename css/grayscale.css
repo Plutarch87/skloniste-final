@@ -224,8 +224,8 @@ a:focus {
   width: 100%;
   padding: 50px 0;
   color: white;
-  background: url('../php/slike/34324239.jpg') no-repeat center center scroll;
-  background-color: black;
+  background: url('../img/IMG_34933.jpg') no-repeat center center scroll;
+  background-color: black!important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -452,4 +452,40 @@ a > i, span {
   max-height: 200px;
   transition: all 0.5s ease;
   transform: scale(0.7);
+}
+
+.album-img {
+  position: relative;
+}
+
+.album-img:after {
+
+  content: "";
+  background-image: url('../img/logo.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  display: inline-block;
+  width: 239px;
+  height: 239px;
+  position: absolute;
+  left: 16%;
+  top: 21%;
+
+}
+
+@media (max-width: 1199px) {
+  .album-img:after {
+    left: 24%;
+  }
+
+@media (max-width: 991px) {
+    .album-img:after {
+      left: 13%;
+    }
+}
+
+@media (max-width: 750px) {
+  .album-img:after {
+    display: none;
+  }
 }
