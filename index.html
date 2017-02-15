@@ -95,15 +95,18 @@
 								<p>Osnovano od strane gitariste Petra Jelića, Kulturno Sklonište je postalo sedište muzičkog obrazovanja, u kom polaznici svih generacija stiču osećaj i usavršavaju veštinu interpretiranja i stvaranja popularne muzike. Zahvaljujući radu tima kvalitetnih profesora - aktivnih muzičara, <strong>Kulturno Sklonište je postala najatraktivnija škola za popularnu muziku u Vojvodini</strong></p>
 						</div>
 					</div>
+					<a href="#profesori" class="btn btn-circle page-scroll">
+							<i class="fa fa-angle-double-down animated"></i>
+					</a>
 		</section>
 
 
 
 		<section id="profesori" class="container content-section">
-			<div class="row" id="profesori">
+			<div class="row">
 					<div class="col-lg-12">
 						<h2 class="text-center">Ljudi</h2>
-						<div id="test" class="profesori clearfix">
+						<div id="ljudi" class="profesori clearfix">
 					</div>        
 			</div>
 		</section>
@@ -122,12 +125,12 @@
 									
 									<div class="clearfix">
 
-										<a href="koncerti.html?category_id=1" target="" class="album-img".>
+										<a href="galerije.html?category_id=1" target="" class="album-img".>
 											<h3 style="color: black">Koncerti</h3>
 											<img src="img/koncerti.png">
 										</a>
 									
-										<a href="koncerti.html?category_id=2" target="" class="album-img".>
+										<a href="galerije.html?category_id=2" target="" class="album-img".>
 											<h3 style="color: black">Prostor</h3>
 											<img src="img/kulturno skloniste 111104001.jpg">
 										</a>
@@ -205,13 +208,8 @@
 									"</div>"+
 								"</div>";
 					});
-					$("#test").append(content);
+					$("#ljudi").append(content);
 				}
-			});
-
-			$("#dugme").click(function(){
-				
-				$('#accordion').slideToggle('fast');
 			});
 			// GALERIJA //
 			$.ajax({

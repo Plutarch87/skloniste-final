@@ -449,9 +449,11 @@ a > i, span {
 }
 
 #logo {
-  max-height: 200px;
+  max-height: 150px;
   transition: all 0.5s ease;
-  transform: scale(0.7);
+  background: black;
+  border-radius: 50%;
+  border: 2px outset white;
 }
 
 .album-img {
@@ -459,18 +461,28 @@ a > i, span {
 }
 
 .album-img:after {
-
   content: "";
   background-image: url('../img/logo.png');
   background-repeat: no-repeat;
-  display: inline-block;
   display: inline-block;
   width: 239px;
   height: 239px;
   position: absolute;
   left: 16%;
   top: 21%;
+  opacity: 0.7;
+}
 
+#about > .row > div {
+  bottom: 125px;
+}
+
+#about > a {
+  margin-top: -180px;
+}
+#ljudi {
+  height: 625px;
+  overflow-y: scroll;
 }
 
 @media (max-width: 1199px) {
