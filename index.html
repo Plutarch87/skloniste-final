@@ -55,7 +55,7 @@
 												<a class="page-scroll" href="#about">O nama</a>
 										</li>
 										<li>
-												<a class="page-scroll" href="#profesori">Profesori</a>
+												<a class="page-scroll" href="#profesori">Ljudi</a>
 										</li>
 										<li>
 												<a class="page-scroll" href="#download">Galerija</a>
@@ -94,10 +94,10 @@
 								<p>2008. godine, Novi Sad je dobio novo sklonište, ali za razliku od svih do tada, ovo je sa pravom nazvano Kulturno Sklonište.</p>
 								<p>Osnovano od strane gitariste Petra Jelića, Kulturno Sklonište je postalo sedište muzičkog obrazovanja, u kom polaznici svih generacija stiču osećaj i usavršavaju veštinu interpretiranja i stvaranja popularne muzike. Zahvaljujući radu tima kvalitetnih profesora - aktivnih muzičara, <strong>Kulturno Sklonište je postala najatraktivnija škola za popularnu muziku u Vojvodini</strong></p>
 						</div>
-					</div>
-					<a href="#profesori" class="btn btn-circle page-scroll">
-							<i class="fa fa-angle-double-down animated"></i>
-					</a>
+				</div>
+				<a href="#profesori" class="btn btn-circle page-scroll">
+						<i class="fa fa-angle-double-down animated"></i>
+				</a>
 		</section>
 
 
@@ -127,7 +127,7 @@
 
 										<a href="galerije.html?category_id=1" target="" class="album-img".>
 											<h3 style="color: black">Koncerti</h3>
-											<img src="img/koncerti.png">
+											<img src="img/koncerti.jpg">
 										</a>
 									
 										<a href="galerije.html?category_id=2" target="" class="album-img".>
@@ -148,8 +148,8 @@
 						<div class="col-lg-8 col-lg-offset-2">
 								<h2>Kontakt</h2>
 								<p>Petar Jelić: 063 1899777</p>
-								<p>Dragana Beliegišanin: 065 8623414</p>
-								<p>Sekretar: 021 6610369</p>									
+								<p>Dragana Belegišanin: 065 8623414</p>
+								<p>Sekretar: 021 6610369</p>				
 								<p>Pronađite nas u Lukijana Mušickog 7, Novi Sad.</p>
 								<p><a href="mailto:kulturnoskloniste@gmail.com">kulturnoskloniste@gmail.com</a></p>
 								<ul class="list-inline banner-social-buttons">
@@ -211,38 +211,7 @@
 					$("#ljudi").append(content);
 				}
 			});
-			// GALERIJA //
-			$.ajax({
-
-				type : 'GET',
-				
-				url : 'api/v1/show_gallery.php?id=18',
-				
-				contentType : 'application/json',
-				
-				success : function(data){
-
-
-					var data = JSON.parse(data);
-
-					var carouselInner = $('.carousel-inner');
-
-					for(var i = 0; i < data.length; i++){
-
-						if(i === 0) {
-							var content = '<div class="item active" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
-						} else {
-
-							var content = '<div class="item" style="text-align: center;">'+ (i+1) +'/'+ data.length + '<img class="img-responsive" src="php/views/assets/images/'+ data[i].filename + '"style="max-height: 500px; margin: auto;"></div>';
-						}
-
-					
-						carouselInner.append(content);										
-
-					}
-				}
 			});
-		});
 		</script>
 
 		<!-- Bootstrap Core JavaScript -->
@@ -257,30 +226,6 @@
 
 		<!-- Theme JavaScript -->
 		<script src="js/grayscale.js"></script>
-
-<!-- MODAL -->
-<div class="modal fade" id="myModal">
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top: 140px">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				  </ol>
-
-				  	<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">				      
-		    	</div>
-				    
-				  </div>
-
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				</div>
 			</div>
 		</div>	
 	</div>
