@@ -5,6 +5,18 @@ body {
   color: white;
   background-color: black;
 }
+*::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: orange;
+  outline: 1px solid slategrey;
+}
 html {
   width: 100%;
   height: 100%;
@@ -511,3 +523,4 @@ a > i, span {
     display: none;
   }
 }
+
