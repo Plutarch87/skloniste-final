@@ -57,14 +57,19 @@
 <script type="text/javascript" src="js/grayscale.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+$(function(){
+
 	$.ajax({
 		type: "GET",
 		url: "api/v1/get_images_gallery.php"+window.location.search,
 		contentType: "application/json",
 		success: function(data) {
 			var data = JSON.parse(data);
+			console.log(Object.keys(data).length);
 			var content = "";
 			var modal = "";
+<<<<<<< HEAD
 			
 			for(var i = 0; i < 20; i++) {
 							content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";

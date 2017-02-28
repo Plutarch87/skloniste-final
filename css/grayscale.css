@@ -299,7 +299,7 @@ a:focus {
   -o-background-size: cover;
 }
 @media (min-width: 767px) {
-  .content-section {
+  .content-section:not(#download):not(#contact) {
     padding-top: 250px;
   }
   .galerija-section {
@@ -613,6 +613,7 @@ a > i, span {
   .album-img:after {
     display: none;
   }
+
   #logo {
     zoom: 0.8;
   }
