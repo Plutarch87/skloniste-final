@@ -3,11 +3,11 @@ require 'galer.header.php';
 $id = $_GET['id'];
 $query = $app['database'];
 $gallery = $query->show('galleries', $id);
-$images = $query->find_all('images', $id);
+$images = $query->find_all_images('images', $id);
 ?>
 <section class="main">
 	<div class="container">
-		<h1 style="font-family: Impact"><?= $gallery[0]['title']; ?></h1>
+		<h1 style="font-family: Impact"><a href="index.php">GALERIJA</a>&nbsp;&gt;&nbsp;</a><?= $gallery[0]['title']; ?></h1>
 		<hr>
 		<?php
 			if(!empty($_SESSION['message'])):

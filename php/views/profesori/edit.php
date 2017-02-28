@@ -45,7 +45,7 @@ $user = $query->show('profesori',$id);
 		    	</div>
 		    	<hr>
 		    	<h4>Trenutna fotografija</h4>
-		    	<img width="250" height="250" src="../assets/images/<?= $user[0]['img']; ?>" alt="<?= $user[0]['name']; ?>1">
+		    	<div class="bounding-box" style="background-image:url('../assets/images/<?= $user[0]['img'];?>')"></div>
 		    	<hr>
 		    	<input type="hidden" name="id" value="<?= $_GET['id']; ?>">
 			<div class="form-group"> 

@@ -5,6 +5,18 @@ body {
   color: white;
   background-color: black;
 }
+*::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: orange;
+  outline: 1px solid slategrey;
+}
 html {
   width: 100%;
   height: 100%;
@@ -20,7 +32,7 @@ h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
-  color: orange;
+  color: #ca8400;
 }
 p {
   margin: 0 0 25px;
@@ -35,7 +47,7 @@ p {
   }
 }
 a {
-  color: darkorange;
+  color: #ca8400;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -57,7 +69,7 @@ a:focus {
 }
 
 .navbar-custom .navbar-toggle {
-  color: orange;
+  color: #ca8400;
   background-color: rgba(255, 255, 255, 0.2);
   font-size: 12px;
 }
@@ -75,11 +87,12 @@ a:focus {
   color: white;
 }
 .navbar-custom .nav li a {
-  color: orange;
-  box-shadow: 1px;
+  color: #ca8400;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background 0.3s ease-in-out;
+  font-size: 2em;
+  font-weight: bold;
 }
 .navbar-custom .nav li a:hover {
   color: rgba(255, 255, 255, 0.8);
@@ -109,7 +122,7 @@ a:focus {
     -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-    color: orange;
+    color: #ca8400;
   }
   .navbar-custom.top-nav-collapse {
     padding: 0;
@@ -121,11 +134,11 @@ a:focus {
   display: table;
   width: 100%;
   height: auto;
-  padding: 100px 0;
   text-align: center;
   color: white;
-  background: url('../img/naslovna.png') no-repeat bottom center scroll;
+  background: url('../img/naslovna.jpg') no-repeat bottom center scroll;
   background-color: black;
+  margin-bottom: 100px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -150,6 +163,50 @@ a:focus {
 
   }
   .intro .intro-body .intro-text {
+    font-size: 26px;
+  }
+}
+.kontakt {
+  display: table;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  color: white;
+  background: url('../img/kontakt-back.jpg') no-repeat bottom center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.kontakt .kontakt-body .brand-heading {
+  font-size: 40px;
+  text-shadow: 20px 20px 20px #000000;
+}
+.kontakt .kontakt-body .kontakt-text {
+  font-size: 18px;
+}
+.kontakt .kontakt-body form input.btn.btn-lg:hover {
+  background-color: grey!important;
+  color: white!important;
+}
+.kontakt .kontakt-body form input.btn.btn-lg:focus {
+  border: 0px solid grey!important;
+  background-color: grey!important;
+  color: white!important;
+}
+@media (min-width: 768px) {
+  .kontakt {
+    height: 100%;
+    padding: 0;
+  }
+  .kontakt .kontakt-body .brand-heading {
+    font-size: 100px;
+    text-shadow: 6px 6px 20px #000000;
+
+  }
+  .kontakt .kontakt-body .kontakt-text {
     font-size: 26px;
   }
 }
@@ -220,11 +277,11 @@ a:focus {
 .content-section {
   padding-top: 100px;
 }
-.download-section {
+.galerija-section {
   width: 100%;
   padding: 50px 0;
   color: white;
-  background: url('../img/IMG_34933.jpg') no-repeat center center scroll;
+  background: url('../img/galerija-back2.jpg') no-repeat center center scroll;
   background-color: black!important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -245,7 +302,7 @@ a:focus {
   .content-section {
     padding-top: 250px;
   }
-  .download-section {
+  .galerija-section {
     padding: 100px 0;
   }
   #map {
@@ -263,16 +320,16 @@ a:focus {
   border-radius: 0;
 }
 .btn-default {
-  border: 1px solid darkorange;
-  color: orange;
+  border: 1px solid #ca8400;
+  color: #ca8400;
   background-color: transparent;
 }
 .btn-default:hover,
 .btn-default:focus {
-  border: 1px solid orange;
+  border: 1px solid #ca8400;
   outline: none;
   color: black;
-  background-color: darkorange;
+  background-color: dark#ca8400;
 }
 ul.banner-social-buttons {
   margin-top: 0;
@@ -317,16 +374,11 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
-
-
 #dugme {
-
   width: 100%;
   margin: auto
 }
-
 .profimg {
-
   max-width: 150px;
   height: auto;
   border-radius: 50%;
@@ -334,63 +386,108 @@ body {
   float: left;
   margin: 20px;
 }
-
-
 .profinof {
-
   vertical-align:bottom;
 }
-
 h3:focus {
   outline: none;
 }
 
-.box-wrapper {
-  position: relative;
-  vertical-align: top;
-  display: inline-table;
-  width: calc(50% - 10px);
-  width: -moz-calc(50% - 10px);
-  padding: 20px 10px;
-  margin-top: 10px;
+@media screen(min-width: 768px) {  
+  .box-wrapper {
+    position: relative;
+    vertical-align: top;
+    display: inline-table;
+    width: calc(50% - 10px);
+    width: -moz-calc(50% - 10px);
+    padding: 20px 10px;
+    margin-top: 10px;
+  }
+  .box-wrapper:nth-child(2n + 1) {
+    margin-right: 10px;
+  }
+
+  .box-header h1 {
+    font-size: 18px;
+    letter-spacing: 1.2px;
+  }
+
+  .box-header h1 > i {
+    font-size: 16px;
+    line-height: 35px;
+    color: #ca8400;
+    opacity: 0.7;
+  }
+
+  .box-body p {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .box-body img {
+    float: left;
+  }
+  .box-wrapper:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: #ca8400;
+    border-radius: 50%;
+    top: 50%;
+    right: 50%;
+    opacity: 0.3;
+    transform: scale(1.9);
+  }
 }
 
-.box-wrapper:nth-child(2n + 1) {
-  margin-right: 10px;
-}
+@media screen(max-width: 767px) {
+  .box-wrapper {
+    position: relative;
+    vertical-align: top;
+    display: inline-table;
+    width: 100%;
+    padding: 20px 10px;
+    margin-top: 10px;
+  }
+  .box-wrapper:nth-child(2n + 1) {
+    margin-right: 10px;
+  }
 
-.box-header h1 {
-  font-size: 18px;
-  letter-spacing: 1.2px;
-}
+  .box-header h1 {
+    font-size: 18px;
+    letter-spacing: 1.2px;
+  }
 
-.box-header h1 > i {
-  font-size: 16px;
-  line-height: 35px;
-  color: orange;
-  opacity: 0.7;
-}
+  .box-header h1 > i {
+    font-size: 16px;
+    line-height: 35px;
+    color: #ca8400;
+    opacity: 0.7;
+  }
 
-.box-body p {
-  font-size: 14px;
-  letter-spacing: 1px;
-}
+  .box-body p {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
 
-.box-body img {
-  float: left;
-}
-.box-wrapper:before {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 100px;
-  height: 100px;
-  background-color: orange;
-  border-radius: 50%;
-  top: 50%;
-  right: 50%;
-  opacity: 0.3;
-  transform: scale(1.9);
+  .box-body img {
+    float: left;
+  }
+  .box-wrapper:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: #ca8400;
+    border-radius: 50%;
+    top: 50%;
+    right: 50%;
+    opacity: 0.3;
+    transform: scale(1.9);
+  }
 }
 
 .image {
@@ -399,22 +496,11 @@ h3:focus {
   background-repeat: no-repeat;
 }
 
-/*.galerija>div>a>img {
-  position: relative;
-  vertical-align: top;
-  display: inline-table;
-  width: calc(50% - 10px);
-  width: -moz-calc(50% - 10px);
-  padding: 20px 10px;
-  margin-top: 10px;
-}*/
-
 .galerija > div > a {
   display: inline-block;
   padding: 20px 10px;
   width: calc(50% - 10px);
   width: -moz-calc(50% - 10px);
-
 }
 
 .galerija > div > h3 {
@@ -445,14 +531,19 @@ h3:focus {
 }
 
 a > i, span {
-  color: orange;
+  color: #ca8400;
 }
 
 #logo {
   max-height: 150px;
-  transition: all 0.5s ease;
-  background: black;
+  transition: all 0.1s ease;
   border-radius: 50%;
+  opacity: 0.75;
+  zoom: 1.5;
+}
+
+#logo:hover {
+  opacity: 1;
   border: 2px outset white;
 }
 
@@ -462,15 +553,16 @@ a > i, span {
 
 .album-img:after {
   content: "";
-  background-image: url('../img/logo.png');
+  background-image: url('../img/logo-white-small2.png');
   background-repeat: no-repeat;
   display: inline-block;
-  width: 239px;
-  height: 239px;
+  width: 250px;
+  height: 250px;
   position: absolute;
-  left: 16%;
-  top: 21%;
-  opacity: 0.7;
+  right: -4%;
+  top: 64%;
+  opacity: 0.75;
+  zoom: 0.5;
 }
 
 #profesori {
@@ -479,16 +571,27 @@ a > i, span {
 
 #about > .row > div {
   bottom: 125px;
-  vertical-align: middle;
-  background-image: url('../img/notes3.png');
-  background-color: rgba(189, 109, 27, 0.61); 
-  -ms-background-position-y: 25%;
-  background-position-x: 25%;
-  border-radius: 50%;
 }
-
+#about {
+  background-image: url('../img/o_nama.jpg');
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  -o-background-size: contain;
+}
 #about > a {
   margin-top: -180px;
+}
+
+@media (max-width: 767px) {
+  #about > .row > div {
+    bottom: 0px;
+  }
+  #about > a {
+  margin-top: 0px;
+  }
 }
 #ljudi {
   height: 625px;
@@ -509,5 +612,8 @@ a > i, span {
 @media (max-width: 750px) {
   .album-img:after {
     display: none;
+  }
+  #logo {
+    zoom: 0.8;
   }
 }

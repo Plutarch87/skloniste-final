@@ -31,7 +31,8 @@ isset($_SESSION['email']) ?: require '../app/bootstrap.php';
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<!-- <li><a href="#">Profil</a></li> -->
+							<li><a href="../../index.html">Idi na sajt</a></li>
+							<li></li>
 							<li><a href="../app/logout.php">Logout</a></li>
 						</ul>
 					</li>

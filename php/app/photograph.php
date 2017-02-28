@@ -46,17 +46,37 @@ class Photograph {
 		  return false;
 		
 		} else {
-			// Set object attributes to the form parameters.				
-				  $this->temp_path  = $file['tmp_name'][$i];
-				  $this->filename   = basename($file['name'][$i]);
-				  $this->type       = $file['type'][$i];
-				  $this->size       = $file['size'][$i];
-				  $this->galleryId  = (int) $i;
+			// Set object attributes to the form parameters.
+
+				$this->temp_path  = $file['tmp_name'][$i];
+				$this->filename   = basename($file['name'][$i]);
+				$this->type       = $file['type'][$i];
+				$this->size       = $file['size'][$i];
+				$this->galleryId  = (int) $i;
 
 				  
 			// Don't worry about saving anything to the database yet.
 			return true;
 		}
+	}
+
+	public function resize_image($file, $w, $h) {
+	    list($width, $height) = getimagesize($file);
+	    $r = $width / $height;
+
+	    if ($w/$h > $r) {
+	        $newwidth = $h*$r;
+	        $newheight = $h;
+	    } else {
+	        $newheight = $w/$r;
+	        $newwidth = $w;
+	    }
+
+	    $src = imagecreatefromjpeg($file);
+	    $dst = imagecreatetruecolor($newwidth, $newheight);
+	    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+	    return $dst;
 	}
   
 	public function save() {
@@ -70,7 +90,7 @@ class Photograph {
 		    return false;
 		  }
 			
-			// Determine the target_path
+		  // Determine the target_path
 		  $target_path = __DIR__.'/../' .DIRECTORY_SEPARATOR. 'views' .DIRECTORY_SEPARATOR. 'assets'.DIRECTORY_SEPARATOR. $this->upload_dir .DIRECTORY_SEPARATOR. $this->filename;
 
 		  // Make sure a file doesn't already exist in the target location
@@ -79,20 +99,20 @@ class Photograph {
 		    return false;
 		  }
 		
-			// Attempt to move the file 
-			if(move_uploaded_file($this->temp_path, $target_path)) {
-		  	// Success
-				// Save a corresponding entry to the database
-				if($this->create()) {
-					// We are done with temp_path, the file isn't there anymore
-					unset($this->temp_path);
-					return true;
-				}
-			} else {
-				// File was not moved.
-		    $this->errors[] = "The file upload failed, possibly due to incorrect permissions on the upload folder.";
-		    return false;
+		// Attempt to move the file 
+		if(move_uploaded_file($this->temp_path, $target_path)) {
+	  		// Success
+			// Save a corresponding entry to the database
+			if($this->create()) {
+				// We are done with temp_path, the file isn't there anymore
+				unset($this->temp_path);
+				return true;
 			}
+		} else {
+			// File was not moved.
+			    $this->errors[] = "The file upload failed, possibly due to incorrect permissions on the upload folder.";
+			    return false;
+		}
 	}
 	
 	public function destroy() {

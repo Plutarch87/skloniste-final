@@ -19,6 +19,9 @@ if($_FILES['img']['error'][0] == 0):
 		endif;
 	endif;
 	for ($i = 0; $i < count($_FILES['img']['name']); $i++):
+		$thumb = new Imagick($_FILES['img']['tmp_name']);
+		$thumb->thumbnailImage(250, 0);
+		$thumb->writeImage();
 		$ph = $_FILES['img']['name'][$i];
 		$photo = new Photograph();
 		$photo->attach_file($_FILES['img'], $i);

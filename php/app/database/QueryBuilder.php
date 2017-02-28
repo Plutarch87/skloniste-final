@@ -170,7 +170,22 @@ class QueryBuilder
 	public function find_all($table, $id="")
 	{
 		$db = new SQLite3('../../skloniste.db');
-		$stmt = $db->query('SELECT * FROM '.$table.' WHERE category_id="'.$id.'"');
+		$stmt = $db->query('SELECT * FROM '.$table.' WHERE category_id='.$id);
+		
+		while($result = $stmt->fetchArray(SQLITE3_ASSOC)):
+			$r[] = $result;
+		arsort($r);
+		endwhile;
+
+		$db->close();
+		
+		return isset($r) ? $r : null;
+  	}
+	
+	public function find_all_images($table, $id="")
+	{
+		$db = new SQLite3('../../../skloniste.db');
+		$stmt = $db->query('SELECT * FROM '.$table.' WHERE category_id='.$id);
 		
 		while($result = $stmt->fetchArray(SQLITE3_ASSOC)):
 			$r[] = $result;
@@ -198,7 +213,7 @@ class QueryBuilder
 	{
 		$db = new SQLite3('../../../skloniste.db');
 
-		$stmt = $db->query('SELECT * FROM galleries');
+		$stmt = $db->query('SELECT * FROM galleries WHERE id != 18');
 
 		while($result = $stmt->fetchArray(SQLITE3_ASSOC)):
 			$r[] = $result;
@@ -210,27 +225,27 @@ class QueryBuilder
 			
 	}
 
-	public function storeGallery($title)
-	{
-		$db = new SQLite3('../../../skloniste.db');
+	// public function storeGallery($title)
+	// {
+	// 	$db = new SQLite3('../../../skloniste.db');
 
-		$query = "INSERT INTO galleries (title) VALUES ('$title');";
+	// 	$query = "INSERT INTO galleries (title) VALUES ('$title');";
 
-		if ($db->exec($query))
-		{
-			$stmt = $db->prepare('SELECT title FROM galleries WHERE id=:id');	
+	// 	if ($db->exec($query))
+	// 	{
+	// 		$stmt = $db->prepare('SELECT title FROM galleries WHERE id=:id');	
 			
-			$result = $stmt->execute();
+	// 		$result = $stmt->execute();
 
-			$db->close();
+	// 		$db->close();
 			
-			return $result;
-		}
-		else
-		{
-			die('Doslo je do neocekivane greske.');			
-		}
-	}
+	// 		return $result;
+	// 	}
+	// 	else
+	// 	{
+	// 		die('Doslo je do neocekivane greske.');			
+	// 	}
+	// }
 
 	public function storeAdmin($table, $name, $surname, $email, $password)
 	{

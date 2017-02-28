@@ -10,7 +10,7 @@ $user = $query->show('profesori', $id);
 		<hr>		
 		<div class="row">
 			<ul>
-				<img width="250" height="250" src="../assets/images/<?= $user[0]['img']; ?>" alt="<?= $user[0]['name']; ?>1">
+				<div class="bounding-box" style="background-image:url('../assets/images/<?= $user[0]['img'];?>')"></div>
 				<li>Instrument: <?= $user[0]['instrument']; ?></li>
 				<li>Biografija: <?= $user[0]['bio']; ?></li>
 			</ul>
