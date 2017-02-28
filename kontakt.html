@@ -56,7 +56,7 @@
 								<div class="row" style="margin-top: 237px;">
 										<div class="col-md-8 col-md-offset-2"  style="background-color: rgba(123, 85, 23, 0.7); border-radius: 50%">
 												<h2>Pošaljite nam poruku</h4>
-												<form>
+												<form action="php/email.php" method="POST" role="form" style="font-family: Arial">
 												  <div class="form-group">
 												    <label for="name">Ime i prezime</label>
 												    <input type="text" class="form-control" name="name" id="name" placeholder="Ime i Prezime">
@@ -66,10 +66,10 @@
 												    <input type="text" class="form-control" name="email" id="email" placeholder="Email">
 												  </div>
 												  <div class="form-group">
-												    <label for="email">Tekst</label>
-												    <textarea class="form-control" name="tekst" id="tekst" placeholder="Tekst" rows="5"></textarea>
+												    <label for="message">Poruka</label>
+												    <textarea class="form-control" name="message" id="message" placeholder="Poruka" rows="5"></textarea>
 												  </div>
-												  <input type="submit" value="Pošalji" style="color: black;">
+												  <input type="submit" class="btn btn-lg" value="Pošalji" style="color: black; border-radius: 5px;">
 												</form>
 										</div>
 								</div>
