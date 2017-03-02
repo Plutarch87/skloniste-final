@@ -45,13 +45,11 @@
 		</div>
 		<!-- /.container -->
 </nav>
-<div id="root"><h1>default</h1></div>
+<h1>Galerije</h1>
+<div id="root"></div>
 <div style="text-align: center;">
 	<ul class="pagination pagination-lg">
-		<li><a id="one" class="links" href="#">1</a></li>
-		<li><a id="two" class="links" href="#">2</a></li>
-		<li><a id="three" class="links" href="#">3</a></li>
-		<li><a id="four" class="links" href="#">4</a></li>
+		
 	</ul>
 </div>
 <script type="text/javascript" src="js/grayscale.js"></script>
@@ -60,161 +58,49 @@
 
 $(function(){
 
+			var currentPage = 1;
+
 	$.ajax({
 		type: "GET",
 		url: "api/v1/get_images_gallery.php"+window.location.search,
 		contentType: "application/json",
+		
 		success: function(data) {
+
 			var data = JSON.parse(data);
-			console.log(Object.keys(data).length);
-			var content = "";
+			var count = Object.keys(data).length;
+			var itemsPerPage = 15;
+			var totalPages = Math.ceil(count / itemsPerPage);
+			var links = "";
 			var modal = "";
-<<<<<<< HEAD
-			
-			for(var i = 0; i < 20; i++) {
-							content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";
-								
+			for (i = 1; i <= totalPages; i++) {
+				 links += $('ul').append('<li><a href="#" class="links">' + i + '</a></li>');
+			}
+			$('.links').click(function(a){
+				currentPage = $(this).html();
+				$('#root').html('');
+			for (var i = (currentPage-1) * itemsPerPage; i < (currentPage * itemsPerPage); i++) {
+							if(i >= count) {
+								break;
+							}
 							modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-							modal += '<div class="modal-header">'
-							modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
+							modal += '<div class="modal-header">';
+							modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>';
 							modal += '</div>';
 							modal += '<div class="modal-body" style="text-align: center;">';
 							modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
 							modal += '</div>';
 							modal += '</div>';
-						}
-							$('#root').empty().append(content, modal);
-							content = "";
-							modal = "";
-						if(window.location.search === "?category_id=1") {
-							$('.links').on('click', function () {
-									  var id = this.id;
-									  switch(id) {
-									    case 'one':	
-									      for(var i = 0; i < 20; i++) {
-									      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-									      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-									      	modal += '<div class="modal-header">'
-									      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-									      	modal += '</div>';
-									      	modal += '<div class="modal-body" style="text-align: center;">';
-									      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-									      	modal += '</div>';
-									      	modal += '</div>';
-									      }
-									      	$('#root').empty().append(content, modal);
-									      	content = "";
-									      	modal = "";
-									      break;
-									    case 'two':
-									      for(var i = 20; i < 40; i++) {
-									      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-									      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-									      	modal += '<div class="modal-header">'
-									      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-									      	modal += '</div>';
-									      	modal += '<div class="modal-body" style="text-align: center;">';
-									      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-									      	modal += '</div>';
-									      	modal += '</div>';
-									      }
-									      	$('#root').empty().append(content, modal);
-									      	content = "";
-									      	modal = "";
-									      break;
-									    case 'three':
-									      for(var i = 40; i < 60; i++) {
-									      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-									      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-									      	modal += '<div class="modal-header">'
-									      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-									      	modal += '</div>';
-									      	modal += '<div class="modal-body" style="text-align: center;">';
-									      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-									      	modal += '</div>';
-									      	modal += '</div>';
-									      }
-									      	$('#root').empty().append(content, modal);
-									      	content = "";
-									      	modal = "";
-									      break;
-									    case 'four':
-									      for(var i = 60; i < 73; i++) {
-									      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-									      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-									      	modal += '<div class="modal-header">'
-									      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-									      	modal += '</div>';
-									      	modal += '<div class="modal-body" style="text-align: center;">';
-									      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-									      	modal += '</div>';
-									      	modal += '</div>';
-									      }
-									      $('#root').empty().append(content, modal);
-									      content = "";
-									      modal = "";
-									      break;
-									  }
-									});
+				$('#root').append("<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>"+ modal);
+	    }				
+			})
 
-								}
-								else if(window.location.search === "?category_id=2") {
-									$('.links').on('click', function () {
-											  var id = this.id;
-											  switch(id) {
-											    case 'one':	
-											      for(var i = 0; i < 11; i++) {
-											      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-											      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-											      	modal += '<div class="modal-header">'
-											      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-											      	modal += '</div>';
-											      	modal += '<div class="modal-body" style="text-align: center;">';
-											      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-											      	modal += '</div>';
-											      	modal += '</div>';
-											      }
-											      	$('#root').empty().append(content, modal);
-											      	content = "";
-											      	modal = "";
-											      break;
-											    case 'two':
-											      for(var i = 11; i < 22; i++) {
-											      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-											      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-											      	modal += '<div class="modal-header">'
-											      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-											      	modal += '</div>';
-											      	modal += '<div class="modal-body" style="text-align: center;">';
-											      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-											      	modal += '</div>';
-											      	modal += '</div>';
-											      }
-											      	$('#root').empty().append(content, modal);
-											      	content = "";
-											      	modal = "";
-											      break;
-											    case 'three':
-											      for(var i = 22; i < 33; i++) {
-											      	content+= "<div class='img-wrapper'><a data-toggle='modal' href='#myModal-"+data[i].id+"'><img class='koncert-img' src='php/views/assets/images/"+data[i].filename+"'></a></div>";			      		
-											      	modal += '<div id="myModal-'+data[i].id+'" class="modal fade" role="dialog">';
-											      	modal += '<div class="modal-header">'
-											      	modal += '<button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>'
-											      	modal += '</div>';
-											      	modal += '<div class="modal-body" style="text-align: center;">';
-											      	modal += '<img src="php/views/assets/images/'+data[i].filename+'">';
-											      	modal += '</div>';
-											      	modal += '</div>';
-											      }
-											      	$('#root').empty().append(content, modal);
-											      	content = "";
-											      	modal = "";
-											      break;
-											  }
-											});
-								}
-					}
-				});
+		}
+// success function end
+	});
+// close ajax
+})
+// end of the script
 </script>
 </body>
 </html>
